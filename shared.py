@@ -30,6 +30,7 @@ logger = Logger(name="shared.py", level=logging.DEBUG) # Create a logger object
 
 class SharedData:
     """Shared data between the different modules."""
+
     def __init__(self):
         self.initialize_paths() # Initialize the paths used by the application
         self.status_list = [] 
@@ -263,6 +264,10 @@ class SharedData:
                 self.web_screen_reversed = True
             elif self.config["epd_type"] == "epd2in13_V4":
                 logger.info("EPD type: epd2in13_V4 screen reversed")
+                self.screen_reversed = True
+                self.web_screen_reversed = True
+            elif self.config["epd_type"] == "epd2in13bc_V3":
+                logger.info("EPD type: epd2in13bc_V3 screen reversed")
                 self.screen_reversed = True
                 self.web_screen_reversed = True
             self.epd_helper.init_full_update()
